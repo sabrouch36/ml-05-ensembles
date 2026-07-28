@@ -41,7 +41,7 @@ dev = [
 docs = [
     # WHY: Only needed for building documentation, not required for running the package.
     "mkdocstrings-python", # automatic API documentation from docstrings
-    "zensical", # fast and minimal static site generator for documentation
+    "zensical==0.0.50", # FIX: version 0.0.51 has a Windows bug
 ]
 
 # ============================================================
