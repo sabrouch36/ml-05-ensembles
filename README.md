@@ -25,7 +25,9 @@ See [docs/your-files.md] for more.
 
 Links:
 
-- [ml_05_case.ipynb](notebooks/ml_05_case.ipynb)
+- [Original ensemble example](notebooks/ml_05_ensembles.ipynb)
+- [Sabri's Phase 4 modification](notebooks/ml_05_sabri.ipynb)
+- [Phase 4 documentation](docs/index.md#phase-4-technical-modification)
 
 ## Working Files
 

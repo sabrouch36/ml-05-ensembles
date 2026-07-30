@@ -21,19 +21,55 @@ to get the example projects running on your machine.
 
 ## Phase 4. Technical Modification
 
-Describe your small technical modification to the example project.
+### Train-Test Performance Gap Analysis
 
-Include:
+I created a copy of the original ensemble notebook named
+[`ml_05_sabri.ipynb`](../notebooks/ml_05_sabri.ipynb).
 
-- What you changed
-- Why you chose that change
-- How you verified that it worked
-- What result, output, chart, metric, or behavior confirmed the change
+The original example compared the models using test accuracy only.
+I extended the evaluation to include:
 
-Compared with the example project,
-explain what is different and why the change matters.
+- train accuracy
+- test accuracy
+- accuracy generalization gap
+- train weighted F1 score
+- test weighted F1 score
+- F1 generalization gap
+- a results table sorted by test performance
+- a chart comparing training and test accuracy
 
-Was it easy, or surprisingly challenging and why do you think so?
+The generalization gaps were calculated by subtracting test performance
+from training performance. This provides additional evidence about whether
+a model may be overfitting.
+
+### Results
+
+| Model | Train Accuracy | Test Accuracy | Accuracy Gap | Train F1 | Test F1 | F1 Gap |
+|---|---:|---:|---:|---:|---:|---:|
+| Random Forest | 1.000 | 1.000 | 0.000 | 1.000 | 1.000 | 0.000 |
+| Gradient Boosting | 1.000 | 0.986 | 0.014 | 1.000 | 0.986 | 0.014 |
+| Single Decision Tree | 0.967 | 0.986 | -0.018 | 0.967 | 0.985 | -0.018 |
+
+Random Forest produced the strongest result, with perfect training and test
+accuracy and no generalization gap on this split.
+
+Gradient Boosting fit the training data perfectly but had a small accuracy gap
+of `0.014`. The single decision tree had a negative gap because its result on
+this particular test set was slightly higher than its training result. The test
+set contained only 69 records, so small differences can noticeably affect the
+reported accuracy.
+
+This modification was moderate because calculating the metrics was
+straightforward, but organizing the results into a reusable table, sorting the
+models, creating the chart, and interpreting the gaps required careful work.
+
+### Evidence
+
+![Train versus test accuracy and generalization gap](./images/phase4_train_test_gap.png)
+
+The notebook was restarted and executed from beginning to end after the
+modification. The completed run produced the comparison table and chart without
+errors.
 
 ## Phase 5. Custom Project
 

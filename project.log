@@ -132,3 +132,116 @@ Name: count, dtype: int64
 2026-07-28 17:08:09 | INFO | ML | shell=powershell
 2026-07-28 17:08:09 | INFO | ML | cwd=.
 2026-07-28 17:08:09 | INFO | ML | github_actions=False
+2026-07-30 04:08:05 | INFO | M05 | === RUN START ===
+2026-07-30 04:08:05 | INFO | M05 | project=M05
+2026-07-30 04:08:05 | INFO | M05 | repo_dir=ml-05-ensembles
+2026-07-30 04:08:05 | INFO | M05 | python=3.14.4
+2026-07-30 04:08:05 | INFO | M05 | os=Windows 11
+2026-07-30 04:08:05 | INFO | M05 | shell=powershell
+2026-07-30 04:08:05 | INFO | M05 | cwd=notebooks
+2026-07-30 04:08:05 | INFO | M05 | github_actions=False
+2026-07-30 04:08:05 | INFO | M05 | Confirming installation:
+2026-07-30 04:08:05 | INFO | M05 |   python:       3.14.4
+2026-07-30 04:08:05 | INFO | M05 |   pandas:       3.0.5
+2026-07-30 04:08:05 | INFO | M05 |   numpy:        2.5.1
+2026-07-30 04:08:05 | INFO | M05 |   scikit-learn: 1.9.0
+2026-07-30 04:08:05 | INFO | M05 |   seaborn:      0.13.2
+2026-07-30 04:08:05 | INFO | M05 |   matplotlib:   3.11.1
+2026-07-30 04:11:16 | INFO | M05 | === RUN START ===
+2026-07-30 04:11:16 | INFO | M05 | project=M05
+2026-07-30 04:11:16 | INFO | M05 | repo_dir=ml-05-ensembles
+2026-07-30 04:11:16 | INFO | M05 | python=3.14.4
+2026-07-30 04:11:16 | INFO | M05 | os=Windows 11
+2026-07-30 04:11:16 | INFO | M05 | shell=powershell
+2026-07-30 04:11:16 | INFO | M05 | cwd=notebooks
+2026-07-30 04:11:16 | INFO | M05 | github_actions=False
+2026-07-30 04:11:16 | INFO | M05 | Confirming installation:
+2026-07-30 04:11:16 | INFO | M05 |   python:       3.14.4
+2026-07-30 04:11:16 | INFO | M05 |   pandas:       3.0.5
+2026-07-30 04:11:16 | INFO | M05 |   numpy:        2.5.1
+2026-07-30 04:11:16 | INFO | M05 |   scikit-learn: 1.9.0
+2026-07-30 04:11:16 | INFO | M05 |   seaborn:      0.13.2
+2026-07-30 04:11:16 | INFO | M05 |   matplotlib:   3.11.1
+2026-07-30 04:11:16 | INFO | M05 | Loading dataset: penguins
+2026-07-30 04:11:16 | INFO | M05 | Loaded: 344 rows (instances), 7 columns
+2026-07-30 04:11:16 | INFO | M05 | Original rows: 344
+2026-07-30 04:11:16 | INFO | M05 | Model rows:    342
+2026-07-30 04:11:16 | INFO | M05 | Classes in target 'species': ['Adelie', 'Chinstrap', 'Gentoo']
+2026-07-30 04:11:16 | DEBUG | M05 | Class counts:
+species
+Adelie       151
+Gentoo       123
+Chinstrap     68
+Name: count, dtype: int64
+2026-07-30 04:11:16 | INFO | M05 | Train instances: 273
+2026-07-30 04:11:16 | INFO | M05 | Test instances: 69
+2026-07-30 04:11:16 | INFO | M05 | Fitting single tree + two ensembles
+2026-07-30 04:11:16 | DEBUG | M05 |   fitted: single_tree
+2026-07-30 04:11:17 | DEBUG | M05 |   fitted: random_forest
+2026-07-30 04:11:17 | DEBUG | M05 |   fitted: gradient_boosting
+2026-07-30 04:11:17 | INFO | M05 | single_tree        train accuracy=0.967, test accuracy=0.986, accuracy gap=-0.018, test F1=0.985
+2026-07-30 04:11:17 | INFO | M05 | random_forest      train accuracy=1.000, test accuracy=1.000, accuracy gap=0.000, test F1=1.000
+2026-07-30 04:11:17 | INFO | M05 | gradient_boosting  train accuracy=1.000, test accuracy=0.986, accuracy gap=0.014, test F1=0.986
+2026-07-30 04:11:18 | INFO | M05 | Best model: random_forest, test accuracy=1.000, accuracy gap=0.000
+2026-07-30 04:11:18 | INFO | M05 | Random forest feature importances (high to low):
+2026-07-30 04:11:18 | INFO | M05 |   bill_length_mm       0.404
+2026-07-30 04:11:18 | INFO | M05 |   flipper_length_mm    0.301
+2026-07-30 04:11:18 | INFO | M05 |   bill_depth_mm        0.219
+2026-07-30 04:11:18 | INFO | M05 |   body_mass_g          0.076
+2026-07-30 04:11:19 | INFO | M05 | ========================
+2026-07-30 04:11:19 | INFO | M05 | SUMMARY
+2026-07-30 04:11:19 | INFO | M05 | ========================
+2026-07-30 04:11:19 | INFO | M05 | Dataset: penguins   Target: species (classification)
+2026-07-30 04:11:19 | INFO | M05 | Compared: single tree vs. random forest vs. gradient boosting
+2026-07-30 04:11:19 | INFO | M05 | ========================
+2026-07-30 04:14:53 | INFO | M05 | === RUN START ===
+2026-07-30 04:14:53 | INFO | M05 | project=M05
+2026-07-30 04:14:53 | INFO | M05 | repo_dir=ml-05-ensembles
+2026-07-30 04:14:53 | INFO | M05 | python=3.14.4
+2026-07-30 04:14:53 | INFO | M05 | os=Windows 11
+2026-07-30 04:14:53 | INFO | M05 | shell=powershell
+2026-07-30 04:14:53 | INFO | M05 | cwd=notebooks
+2026-07-30 04:14:53 | INFO | M05 | github_actions=False
+2026-07-30 04:14:53 | INFO | M05 | Confirming installation:
+2026-07-30 04:14:53 | INFO | M05 |   python:       3.14.4
+2026-07-30 04:14:53 | INFO | M05 |   pandas:       3.0.5
+2026-07-30 04:14:53 | INFO | M05 |   numpy:        2.5.1
+2026-07-30 04:14:53 | INFO | M05 |   scikit-learn: 1.9.0
+2026-07-30 04:14:53 | INFO | M05 |   seaborn:      0.13.2
+2026-07-30 04:14:53 | INFO | M05 |   matplotlib:   3.11.1
+2026-07-30 04:14:53 | INFO | M05 | Loading dataset: penguins
+2026-07-30 04:14:53 | INFO | M05 | Loaded: 344 rows (instances), 7 columns
+2026-07-30 04:14:53 | INFO | M05 | Original rows: 344
+2026-07-30 04:14:53 | INFO | M05 | Model rows:    342
+2026-07-30 04:14:53 | INFO | M05 | Classes in target 'species': ['Adelie', 'Chinstrap', 'Gentoo']
+2026-07-30 04:14:53 | DEBUG | M05 | Class counts:
+species
+Adelie       151
+Gentoo       123
+Chinstrap     68
+Name: count, dtype: int64
+2026-07-30 04:14:53 | INFO | M05 | Train instances: 273
+2026-07-30 04:14:53 | INFO | M05 | Test instances: 69
+2026-07-30 04:14:53 | INFO | M05 | Fitting single tree + two ensembles
+2026-07-30 04:14:53 | DEBUG | M05 |   fitted: single_tree
+2026-07-30 04:14:54 | DEBUG | M05 |   fitted: random_forest
+2026-07-30 04:14:54 | DEBUG | M05 |   fitted: gradient_boosting
+2026-07-30 04:14:54 | INFO | M05 | single_tree        train accuracy=0.967, test accuracy=0.986, accuracy gap=-0.018, test F1=0.985
+2026-07-30 04:14:54 | INFO | M05 | random_forest      train accuracy=1.000, test accuracy=1.000, accuracy gap=0.000, test F1=1.000
+2026-07-30 04:14:54 | INFO | M05 | gradient_boosting  train accuracy=1.000, test accuracy=0.986, accuracy gap=0.014, test F1=0.986
+2026-07-30 04:14:55 | INFO | M05 | Best model: random_forest, test accuracy=1.000, accuracy gap=0.000
+2026-07-30 04:14:55 | INFO | M05 | Random forest feature importances (high to low):
+2026-07-30 04:14:55 | INFO | M05 |   bill_length_mm       0.404
+2026-07-30 04:14:55 | INFO | M05 |   flipper_length_mm    0.301
+2026-07-30 04:14:55 | INFO | M05 |   bill_depth_mm        0.219
+2026-07-30 04:14:55 | INFO | M05 |   body_mass_g          0.076
+2026-07-30 04:14:55 | INFO | M05 | ========================
+2026-07-30 04:14:55 | INFO | M05 | SUMMARY
+2026-07-30 04:14:55 | INFO | M05 | ========================
+2026-07-30 04:14:55 | INFO | M05 | Dataset: penguins   Target: species (classification)
+2026-07-30 04:14:55 | INFO | M05 | Compared: single tree vs. random forest vs. gradient boosting
+2026-07-30 04:14:55 | INFO | M05 | ========================
+2026-07-30 04:16:47 | INFO | M05 | single_tree        train accuracy=0.967, test accuracy=0.986, accuracy gap=-0.018, test F1=0.985
+2026-07-30 04:16:47 | INFO | M05 | random_forest      train accuracy=1.000, test accuracy=1.000, accuracy gap=0.000, test F1=1.000
+2026-07-30 04:16:47 | INFO | M05 | gradient_boosting  train accuracy=1.000, test accuracy=0.986, accuracy gap=0.014, test F1=0.986
+2026-07-30 04:16:48 | INFO | M05 | Best model: random_forest, test accuracy=1.000, accuracy gap=0.000
