@@ -4,196 +4,207 @@
 [![Python 3.14](https://img.shields.io/badge/python-3.14%2B-blue?logo=python)](./pyproject.toml)
 [![MIT](https://img.shields.io/badge/license-see%20LICENSE-yellow.svg)](./LICENSE)
 
-> Professional Python project: combining models with ensemble methods.
+> Ensemble machine learning project comparing Random Forest and Gradient
+> Boosting for red wine quality classification.
 
 ## Project Description
 
-This project focuses on learning to combine models to get better predictions.
+This project applies ensemble machine learning methods to classify red wine
+quality from physicochemical measurements.
 
-We learn to:
+The original numeric quality score was converted into three categories:
 
-- understand why ensembles outperform single models
-- train random forests and gradient boosting models
-- read feature importance scores
-- tune key hyperparameters
+- **Low:** quality scores 3–4
+- **Medium:** quality scores 5–6
+- **High:** quality scores 7–8
 
-## Example Notebook + Your Notebook
+The custom project compares:
 
-Keep the example notebook as it is.
-Either copy it or use it to build a new notebook that ends in _yourname.
-See [docs/your-files.md] for more.
+- Random Forest with 200 trees and `max_depth=10`
+- Gradient Boosting with 100 estimators
 
-Links:
+Model performance is evaluated using accuracy, weighted F1, macro F1,
+train-test generalization gaps, per-class metrics, confusion matrices, and
+feature importance.
+
+## Custom Project Notebook
+
+The fully executed Phase 5 notebook contains the complete analysis, code,
+outputs, tables, and charts:
+
+[Open the executed wine-quality notebook](notebooks/project05/ensemble-sabri.ipynb)
+
+Additional notebooks:
 
 - [Original ensemble example](notebooks/ml_05_ensembles.ipynb)
 - [Sabri's Phase 4 modification](notebooks/ml_05_sabri.ipynb)
-- [Phase 4 documentation](docs/index.md#phase-4-technical-modification)
 
-## Working Files
+## Dataset
 
-You'll work with these areas:
+The project uses the Red Wine Quality Dataset from the UCI Machine Learning
+Repository.
 
-- **data/raw** - raw data for exploration (only if you add a dataset)
-- **docs/** - project narrative and documentation
-- **src/mlstudio/** - the app is an example; run only (no need to modify)
-- **notebooks/** - interactive analysis
-- **pyproject.toml** - update authorship & links
-- **zensical.toml** - update authorship & links
+The original data contained:
 
-## Instructions (pro-analytics-02)
+- 1,599 records
+- 11 physicochemical input features
+- one numeric quality score
+- no missing values
+- 240 exact duplicate rows
 
-Follow the
-[step-by-step workflow guide](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/)
-to complete:
+After duplicate removal, 1,359 unique records remained.
 
-1. Phase 1. **Start & Run**
-2. Phase 2. **Change Authorship**
-3. Phase 3. **Read & Understand**
-4. Phase 4. **Modify**
-5. Phase 5. **Apply**
+The cleaned target distribution was strongly imbalanced:
 
-## Challenges
+| Quality category | Count | Percentage |
+| --- | ---: | ---: |
+| Low | 63 | 4.6% |
+| Medium | 1,112 | 81.8% |
+| High | 184 | 13.5% |
 
-Challenges are expected.
-Sometimes instructions may not quite match your operating system.
-When issues occur, share screenshots, error messages, and details about what you tried.
-Working through issues is part of implementing professional projects.
+![Red wine quality category distribution](./docs/images/phase5_class_distribution.png)
 
-## Success
+## Model Results
 
-After completing Phase 1. **Start & Run**, you'll have your own GitHub project,
-with the example notebook executed and committed,
-and running the example module will print out:
+The majority-class baseline test accuracy was `0.8162`.
+
+| Model | Test Accuracy | Test Weighted F1 | Test Macro F1 | Accuracy Gap |
+|---|---:|---:|---:|---:|
+| Random Forest | 0.8529 | 0.8241 | 0.4953 | 0.1167 |
+| Gradient Boosting | 0.8456 | 0.8232 | 0.5020 | 0.1241 |
+
+Random Forest produced the strongest overall result, with the highest test
+accuracy, the highest weighted F1 score, and the smaller accuracy
+generalization gap.
+
+Gradient Boosting achieved a slightly higher macro F1 score and identified more
+High-quality wines.
+
+![Ensemble model performance comparison](./docs/images/phase5_model_comparison.png)
+
+## Key Findings
+
+Although both models exceeded the majority-class baseline, the improvement was
+limited. Random Forest improved test accuracy by approximately 3.7 percentage
+points.
+
+Neither model correctly identified any of the 13 Low-quality wines in the test
+set. All were classified as Medium. This demonstrates why overall accuracy can
+be misleading when the target is imbalanced.
+
+![Random Forest confusion matrix](./docs/images/phase5_confusion_matrix_random_forest.png)
+
+The most influential features across both models were:
+
+1. alcohol
+2. volatile acidity
+3. sulphates
+4. density
+5. total sulfur dioxide
+
+![Feature importance by ensemble model](./docs/images/phase5_feature_importance.png)
+
+## Project Setup
+
+Clone the repository and enter the project folder:
 
 ```shell
-========================
-Executed successfully!
-========================
+git clone https://github.com/sabrouch36/ml-05-ensembles
+cd ml-05-ensembles
 ```
 
-A new file `project.log` will appear in the root project folder.
-
-## Command Reference
-
-<details>
-<summary>Show command reference</summary>
-
-### In a machine terminal (open in your `Repos` folder)
-
-After you get a copy of this repo in your own GitHub account,
-open a machine terminal in your `Repos` folder:
+Create and synchronize the project environment:
 
 ```shell
+uv python pin 3.14
+uv sync --extra dev --extra docs
+```
 
-git clone https://github.com/sabrouch36/ml-05-ensembles
+Open the repository in VS Code:
 
-cd ml-05-ensembles
+```shell
 code .
 ```
 
-### In a VS Code terminal
+Select the project's `.venv` Python kernel before running the notebooks.
 
-These are listed for convenience.
-For best results, follow the detailed instructions in
-[pro-analytics-02 guide](https://denisecase.github.io/pro-analytics-02/).
+## Run the Project
+
+Open and run the custom notebook in VS Code:
+
+```text
+notebooks/project05/ensemble-sabri.ipynb
+```
+
+To execute the notebook from the terminal:
 
 ```shell
-uv self update
-uv python pin 3.14
-uv lock --upgrade
-uv sync --extra dev --extra docs --upgrade
+uv run python -m nbconvert --to notebook --execute --inplace notebooks/project05/ensemble-sabri.ipynb
+```
 
-uvx pre-commit install
-uvx pre-commit autoupdate
+Run the original example module:
 
-git add -A
-uvx pre-commit run --all-files
-# repeat if changes were made
-uvx pre-commit run --all-files
-
-# run the example module to verify the environment (.venv/)
+```shell
 uv run python -m mlstudio.app_case
+```
 
-# run common chores
+Build the documentation site:
+
+```shell
+uv run python -m zensical build
+```
+
+Run the project quality checks:
+
+```shell
 uv run ruff format .
 uv run ruff check . --fix
 uv run python -m pyright
 uv run python -m pytest
-uv run python -m zensical build
-
-# save progress
-git add -A
-git commit -m "update"
-git push -u origin main
 ```
 
-</details>
+## Project Structure
 
-## Notes
-
-- Use the **UP ARROW** and **DOWN ARROW** in the terminal to scroll through past commands.
-- Use `CTRL+f` to find (and replace) text within a file.
-- You do not need to add to or modify `tests/`. They are provided for example only.
-- Many files are silent helpers. Explore as you like, but nothing is required.
-- You do NOT need to understand everything; understanding builds naturally over time.
-
-## Troubleshooting >>>
-
-If you see something like this in your terminal: `>>>` or `...`
-You accidentally started Python interactive mode.
-It happens.
-Press `Ctrl+c` (both keys together) or `Ctrl+Z` then `Enter` on Windows.
-
-## Example Output (Can Remove this Section after You Verify)
-
-```shell
-| INFO | ML | Summarize workflow........
-| INFO | ML | ========================
-| INFO | ML | SUMMARY
-| INFO | ML | ========================
-| INFO | ML | Dataset: hours_scores_case
-| INFO | ML | Original rows: 10
-| INFO | ML | Clean rows: 10
-| INFO | ML | Features: ['hours_studied', 'practice_quizzes', 'attendance_pct', 'sleep_hours', 'prior_score']
-| INFO | ML | Target: score
-| INFO | ML | ----- in a script, call plt.show() once at the end to display all charts -----
-| INFO | ML | ----- in a script, CLOSE the chart windows with the close button to CONTINUE -----
-| INFO | ML | Workflow complete
-| INFO | ML | IMPORTANT: This script creates chart windows.
-| INFO | ML | Close chart windows and terminate this process with CTRL+c as needed.
-| INFO | ML | ========================
-| INFO | ML | Executed successfully!
-| INFO | ML | ========================
+```text
+ml-05-ensembles/
+├── data/raw/
+│   └── winequality-red.csv
+├── docs/
+│   ├── images/
+│   └── index.md
+├── notebooks/
+│   ├── ml_05_ensembles.ipynb
+│   ├── ml_05_sabri.ipynb
+│   └── project05/
+│       └── ensemble-sabri.ipynb
+├── src/mlstudio/
+├── pyproject.toml
+├── zensical.toml
+└── README.md
 ```
 
-## Findings and Visuals
+## Documentation
 
-Take screenshots of your charts and provide them here with a discussion.
-In Markdown, display a figure by using:
-an exclamation mark immediately followed by square brackets containing a useful caption
-immediately followed by parentheses containing the relative path to your figure.
-Note: When you start typing the path with a dot (.) for "here, in this directory",
-the IDE may help complete the path.
+- [Project analytics narrative](docs/index.md)
+- [Hosted GitHub Pages documentation](https://sabrouch36.github.io/ml-05-ensembles/)
+- [Project instructions](docs/project-instructions.md)
+- [Glossary](docs/glossary.md)
+- [API documentation](docs/api.md)
 
-In your custom project, follow this example, but
+## Limitations and Future Work
 
-- your figures and narrative should reflect your work,
-- this `README.md` should include your commands, process, and visuals, and
-- `docs/index.md` should include your narrative.
+The primary limitation is the severe target imbalance, especially the small
+Low-quality class.
 
-Remove unnecessary instructional comments in your custom files.
+Potential improvements include:
 
-Update figures to present interesting results from your custom project:
-
-![Provide a Useful Caption](./docs/images/Figure_1.png)
-
-![Provide a Useful Caption](./docs/images/Figure_2.png)
-
-## Project Documentation
-
-Additional project instructions, terms, and notes:
-
-[docs/index.md](docs/index.md)
+- collecting more Low-quality observations
+- applying class weighting or resampling
+- using stratified cross-validation
+- tuning ensemble hyperparameters
+- optimizing macro F1 rather than accuracy
+- evaluating alternative category boundaries
+- using permutation importance or SHAP values
 
 ## Citation
 

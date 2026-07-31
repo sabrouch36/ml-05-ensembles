@@ -28,6 +28,11 @@ dependencies = [
     "matplotlib" # plotting library for static, animated, and interactive visualizations in Python
 ]
 
+[project.urls]
+Homepage = "https://sabrouch36.github.io/ml-05-ensembles/"
+Repository = "https://github.com/sabrouch36/ml-05-ensembles"
+Documentation = "https://sabrouch36.github.io/ml-05-ensembles/"
+
 [project.optional-dependencies]
 dev = [
     # WHY: Only used during development, not required for running the package.

@@ -1,0 +1,7 @@
+Model,Quality Category,precision,recall,f1-score,support
+"Random Forest (200, max_depth=10)",Low,0.0,0.0,0.0,13.0
+"Random Forest (200, max_depth=10)",Medium,0.8699186991869918,0.963963963963964,0.9145299145299145,222.0
+"Random Forest (200, max_depth=10)",High,0.6923076923076923,0.4864864864864865,0.5714285714285714,37.0
+Gradient Boosting (100),Low,0.0,0.0,0.0,13.0
+Gradient Boosting (100),Medium,0.875,0.9459459459459459,0.9090909090909091,222.0
+Gradient Boosting (100),High,0.6666666666666666,0.5405405405405406,0.5970149253731343,37.0
